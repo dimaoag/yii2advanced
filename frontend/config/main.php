@@ -41,6 +41,9 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                '/' => 'site/index',
+                'news' => 'test/index',
+                'news/<id:\d+>' => 'test/view',
             ],
         ],
         'stringHelper' => [
@@ -53,7 +56,7 @@ return [
                 'class' => 'Swift_SmtpTransport',
                 'host' => 'smtp.gmail.com',
                 'username' => 'dimaoag@gmail.com',
-                'password' => '1926odag3',
+                'password' => '*****',
                 'port' => '587',
                 'encryption' => 'tls',
             ],
