@@ -56,7 +56,7 @@ return [
                 'class' => 'Swift_SmtpTransport',
                 'host' => 'smtp.gmail.com',
                 'username' => 'dimaoag@gmail.com',
-                'password' => '*****',
+                'password' => '1926odag4',
                 'port' => '587',
                 'encryption' => 'tls',
             ],
