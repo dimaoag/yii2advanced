@@ -1,6 +1,6 @@
 <?php
 
-namespace frontend\components;
+namespace common\components;
 use Yii;
 
 
@@ -22,6 +22,21 @@ class StringHelper
         }
         return substr($string, 0, $limit);
     }
+
+    public function getShortFullWord($string, $limit = null){
+
+        if ($limit === null){
+            $limit = $this->limit;
+        }
+
+        $str = substr($string, $limit, $limit + 20);
+        $pos = strpos($str, ' ');
+        $result = substr($string, 0, $limit + $pos);
+
+        return $result;
+
+    }
+
 
 
 }

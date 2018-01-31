@@ -44,10 +44,11 @@ return [
                 '/' => 'site/index',
                 'news' => 'test/index',
                 'news/<id:\d+>' => 'test/view',
+                'news-count' => 'news_count/index',
             ],
         ],
         'stringHelper' => [
-            'class' => 'frontend\components\StringHelper',
+            'class' => 'common\components\StringHelper',
         ],
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',

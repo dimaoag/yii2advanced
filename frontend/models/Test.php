@@ -2,7 +2,7 @@
 
 namespace frontend\models;
 use Yii;
-use frontend\components\StringHelper;
+use common\components\StringHelper;
 
 
 class Test{
@@ -25,7 +25,7 @@ class Test{
             //$helper = new StringHelper();
             //$helper = Yii::$app->stringHelper;
             foreach ($result as &$item){
-                $item['content'] = Yii::$app->stringHelper->getShort($item['content']);
+                $item['content'] = Yii::$app->stringHelper->getShortFullWord($item['content'],50);
             }
         }
 

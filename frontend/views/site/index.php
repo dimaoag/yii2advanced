@@ -48,6 +48,6 @@ $this->title = 'My Yii Application';
                 <p><a class="btn btn-default" href="http://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
             </div>
         </div>
-
+        <a href="<?php echo Yii::$app->urlManager->createUrl(['news_count/index']); ?>" class="btn btn-info">news count</a>
     </div>
 </div>

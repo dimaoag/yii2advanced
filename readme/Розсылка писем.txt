@@ -5,3 +5,13 @@
     2.3) Получить получателей
     2.4) Отпавка писем
 3) Шаблон письма
+
+
+ - create model News (console\model); -> namespace console\model; -> use Yii;
+ - in model create methods
+ - create controller (console\controllers); -> namespace console\controllers; -> use Yii;
+ -> use  console\model\News; -> create action; ->
+ - php yii mailer/send (terminal)
+ - include component stringHelper in console/main.php
+ - insert variable in console/params.php
+ - change location stringHelper with frontend to common

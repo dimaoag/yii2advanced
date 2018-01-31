@@ -2,28 +2,26 @@
 namespace console\controllers;
 
 use Yii;
+use Codeception\Command\Console;
 use yii\console\Controller;
 use console\models\News;
+use console\models\Subscriber;
+use console\models\Sender;
+
 
 class MailerController extends Controller
 {
 
     public function actionSend(){
 
-        $list = News::getList();
-        print_r($list);
+        $newsList = News::getList();
+        $subscribes = Subscriber::getList();
+
+        $count = Sender::send($subscribes, $newsList);
 
 
-//        $result = Yii::$app->mailer->compose()
-//            ->setFrom('dimaoag@gmail.com')
-//            ->setTo('dimaoag@gmail.com')
-//            ->setSubject('Тема сообщения')
-//            ->setTextBody('Text massage')
-//            ->setHtmlBody('<h2>Text massage</h2>')
-//            ->send();
-//
-//        var_dump($result);
-        die();
+        echo "\nEmails send: {$count}";
     }
+
 
 }

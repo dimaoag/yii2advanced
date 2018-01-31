@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: dima
- * Date: 31.01.18
- * Time: 14:07
- */
 
 namespace console\models;
 use Yii;
@@ -14,17 +8,34 @@ class News
 {
     const STATUS_NOT_SEND = 1;
 
+    /**
+     * @return mixed
+     */
+
     public static function getList(){
 
         $sql = "SELECT * FROM news WHERE status = ". self::STATUS_NOT_SEND;
 
-        return Yii::$app->db->createCommand($sql)->queryAll();
+        $result = Yii::$app->db->createCommand($sql)->queryAll();
+
+        return self::prepareList($result);
     }
 
 
+    /**
+     * @param array $result
+     * @return mixed
+     */
 
-    public static function prepareList($list){
+    public static function prepareList($result){
 
+        if (!empty($result) && is_array($result)){
+            foreach ($result as &$item){
+                $item['content'] = Yii::$app->stringHelper->getShort($item['content'], 50);
+            }
+        }
+
+        return $result;
     }
 
 
