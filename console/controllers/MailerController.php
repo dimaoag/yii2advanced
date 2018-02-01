@@ -23,5 +23,18 @@ class MailerController extends Controller
         echo "\nEmails send: {$count}";
     }
 
+    public function actionDispatch(){
+
+        //разссылка
+
+        $subscribes = Subscriber::getList();
+
+        $count = Sender::sendSalary($subscribes);
+
+
+        echo "\nEmails send: {$count}";
+
+    }
+
 
 }
