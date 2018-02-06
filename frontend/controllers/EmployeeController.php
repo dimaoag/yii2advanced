@@ -126,6 +126,7 @@ class EmployeeController extends Controller
 
             if ($model->validate() && $model->save()){
                 Yii::$app->session->setFlash('success', 'Success:)');
+
             }
 
         }

@@ -4,6 +4,7 @@ namespace frontend\controllers;
 use yii\web\Controller;
 use frontend\models\Test;
 use Yii;
+use frontend\models\ExampleValidation;
 
 
 
@@ -44,6 +45,29 @@ class TestController extends Controller{
             ->send();
 
         var_dump($result); die();
+    }
+
+
+    public function actionValidation(){
+
+        $model = new ExampleValidation();
+
+        $formData = Yii::$app->request->post();
+
+        if (Yii::$app->request->isPost){
+
+            $model->attributes = $formData;
+
+            if ($model->validate()){
+                Yii::$app->session->setFlash('success', 'Success:)');
+            }
+
+        }
+
+
+        return $this->render('validation', [
+            'model' => $model,
+        ]);
     }
 
 

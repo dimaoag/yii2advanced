@@ -50,5 +50,7 @@ $this->title = 'My Yii Application';
             </div>
         </div>
         <a href="<?php echo Yii::$app->urlManager->createUrl(['news_count/index']); ?>" class="btn btn-info">news count</a>
+        <a href="<?php echo Yii::$app->urlManager->createUrl(['employee/register']); ?>" class="btn btn-info">Employee Register</a>
+        <a href="<?php echo Yii::$app->urlManager->createUrl(['employee/update']); ?>" class="btn btn-info">Employee Update</a>
     </div>
 </div>

@@ -46,6 +46,8 @@ return [
                 'news' => 'test/index',
                 'news/<id:\d+>' => 'test/view',
                 'news-count' => 'news_count/index',
+                'employee/register' => 'employee/register',
+                'employee/update' => 'employee/update',
             ],
         ],
         'stringHelper' => [
