@@ -48,6 +48,7 @@ return [
                 'news-count' => 'news_count/index',
                 'employee/register' => 'employee/register',
                 'employee/update' => 'employee/update',
+                'gallery' => 'gallery/index',
             ],
         ],
         'stringHelper' => [
