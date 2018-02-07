@@ -60,12 +60,16 @@ return [
                 'class' => 'Swift_SmtpTransport',
                 'host' => 'smtp.gmail.com',
                 'username' => 'dimaoag@gmail.com',
-                'password' => '1926odag4',
+                'password' => '******',
                 'port' => '587',
                 'encryption' => 'tls',
             ],
         ],
 
+    ],
+    'aliases' => [
+        '@files' => '/var/www/php_up/frontend/web/files',
+        '@photos' => '@files/photos',
     ],
     'params' => $params,
 ];
