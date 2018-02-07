@@ -43,8 +43,8 @@ return [
             'showScriptName' => false,
             'rules' => [
                 '/' => 'site/index',
-                'news' => 'test/index',
-                'news/<id:\d+>' => 'test/view',
+                'news' => 'nivo_images/index',
+                'news/<id:\d+>' => 'nivo_images/view',
                 'news-count' => 'news_count/index',
                 'employee/register' => 'employee/register',
                 'employee/update' => 'employee/update',

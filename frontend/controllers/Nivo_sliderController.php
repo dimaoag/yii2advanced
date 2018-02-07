@@ -3,24 +3,17 @@
  * Created by PhpStorm.
  * User: dima
  * Date: 07.02.18
- * Time: 15:25
+ * Time: 18:11
  */
 
 namespace frontend\controllers;
 use yii\web\Controller;
 
-class GalleryController extends Controller
+class Nivo_sliderController extends Controller
 {
 
     public function actionIndex(){
 
-
-
         return $this->render('index');
     }
-
-
-
-
-
 }

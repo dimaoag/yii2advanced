@@ -38,7 +38,7 @@ AppAsset::register($this);
     $menuItems = [
         ['label' => 'Home', 'url' => ['/site/index']],
         ['label' => 'About', 'url' => ['/site/about']],
-        ['label' => 'Novosti', 'url' => [ Yii::$app->urlManager->createUrl(['test/index']) ]],
+        ['label' => 'Novosti', 'url' => [ Yii::$app->urlManager->createUrl(['nivo_images/index']) ]],
         ['label' => 'Contact', 'url' => ['/site/contact']],
     ];
     if (Yii::$app->user->isGuest) {
