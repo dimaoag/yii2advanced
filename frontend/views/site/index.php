@@ -49,5 +49,7 @@ $this->title = 'My Yii Application';
         <a href="<?php echo Yii::$app->urlManager->createUrl(['employee/register']); ?>" class="btn btn-info">Employee Register</a>
         <a href="<?php echo Yii::$app->urlManager->createUrl(['employee/update']); ?>" class="btn btn-info">Employee Update</a>
         <a href="<?php echo Yii::$app->urlManager->createUrl(['gallery/index']); ?>" class="btn btn-info">Gallery</a>
+        <a href="<?php echo Yii::$app->urlManager->createUrl(['html-helper/demo']); ?>" class="btn btn-info">Html Helper</a>
+        <a href="<?php echo Yii::$app->urlManager->createUrl(['html-helper/escape-output']); ?>" class="btn btn-info">escape-output</a>
     </div>
 </div>

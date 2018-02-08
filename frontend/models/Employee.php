@@ -69,4 +69,13 @@ class Employee extends Model
     }
 
 
+    public static function find(){
+
+        $sql = 'SELECT * FROM `employee`';
+
+
+        return Yii::$app->db->createCommand($sql)->queryAll();
+    }
+
+
 }

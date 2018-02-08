@@ -72,6 +72,7 @@ return [
     'aliases' => [
         '@files' => '/var/www/php_up/frontend/web/files',
         '@photos' => '@files/photos',
+        '@images' => '/files/photos',
     ],
     'params' => $params,
 ];
