@@ -9,6 +9,7 @@
 namespace frontend\models;
 use yii\base\Model;
 use Yii;
+use yii\helpers\ArrayHelper;
 
 class Employee extends Model
 {
@@ -27,7 +28,7 @@ class Employee extends Model
     public $position;
     public $userId;
 
-    public $cities = [1, 2, 3, 4];
+
 
 
     public function scenarios()
@@ -48,10 +49,10 @@ class Employee extends Model
             [['firstName'], 'string', 'min' => 2],
             [['lastName'], 'string', 'min' => 3],
             [['middleName'], 'required', 'on' => self::SCENARIO_EMPLOYEE_UPDATE],
-            [['birthday'], 'date', 'format' => 'Y-M-d'],
-            [['dateWorkStart'], 'date', 'format' => 'Y-M-d'],
-            [['dateWorkStart'], 'required'],
-            [['city'], 'in', 'range' => $this->cities],
+            [['birthday'], 'date', 'format' => 'php:Y-m-d'],
+            [['dateWorkStart'], 'date', 'format' => 'php:Y-m-d'],
+            [['city'], 'safe'],
+            //[['city'], 'in', 'range' => $this->cities],
             [['position'], 'required'],
             [['position'], 'string'],
             [['userId'], 'required'],
@@ -61,11 +62,12 @@ class Employee extends Model
 
     public function save(){
 
-        $sql = "INSERT INTO `employee` (firstName, lastName, middleName, email, birthday, dateWorkStart, 
+        $sql = "INSERT INTO `employee` (firstName, lastName, middleName, email, birthday, dateWorkStart,
             city, `position`, userId) VALUES ('{$this->firstName}','{$this->lastName}', '{$this->middleName}'
             , '{$this->email}', '{$this->birthday}', '{$this->dateWorkStart}', '{$this->city}', '{$this->position}'
             , '{$this->userId}')";
         return Yii::$app->db->createCommand($sql)->execute();
+
     }
 
 
@@ -75,6 +77,17 @@ class Employee extends Model
 
 
         return Yii::$app->db->createCommand($sql)->queryAll();
+    }
+
+    public function getCitiesList(){
+
+        $sql = 'SELECT * FROM `city`';
+
+
+        $result =  Yii::$app->db->createCommand($sql)->queryAll();
+
+        return ArrayHelper::map($result, 'id', 'name');
+
     }
 
 
