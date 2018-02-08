@@ -1,5 +1,20 @@
 <?php
+
+/* @var $this yii\web\View */
 /* @var $model frontend\models\Subscribe; */
+
+use frontend\assets\GalleryAsset;
+GalleryAsset::register($this);
+
+$this->title = 'Subscribe!';
+$this->registerMetaTag([
+    'name' => 'description',
+    'content' => 'Description of the page ...',
+]);
+
+$this->params['breadcrumbs'] = [
+        ['label' => 'subscribe'],
+];
 
 //if (Yii::$app->session->hasFlash('subscribeStatus')){
 //    echo Yii::$app->session->getFlash('subscribeStatus');

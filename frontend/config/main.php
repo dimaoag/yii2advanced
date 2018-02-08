@@ -49,6 +49,7 @@ return [
                 'employee/register' => 'employee/register',
                 'employee/update' => 'employee/update',
                 'gallery' => 'gallery/index',
+                'about-me' => 'site/about',
             ],
         ],
         'stringHelper' => [
