@@ -18,7 +18,8 @@ class BookShopController extends Controller
 //        $bookList = $query->all();
 
         $conditions = ['publisher_id' => 1];
-        $bookList = Book::find()->where($conditions)->limit(2)->orderBy('date_published')->all();
+        //$bookList = Book::find()->where($conditions)->limit(2)->orderBy('date_published')->all();
+        $bookList = Book::find()->limit(20)->orderBy('date_published')->all();
 
         return $this->render('index', [
             'bookList' => $bookList,

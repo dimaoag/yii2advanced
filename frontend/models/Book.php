@@ -7,8 +7,9 @@
  */
 
 namespace frontend\models;
+use yii\db\ActiveQuery;
 use yii\db\ActiveRecord;
-
+use Yii;
 
 class Book extends ActiveRecord
 {
@@ -29,10 +30,60 @@ class Book extends ActiveRecord
         ];
     }
 
+
+    /**
+     * @return string
+     *
+     */
+
     public function getDatePublished(){
 
-        return ($this->date_published) ? $this->date_published : 'Not set';
+        return ($this->date_published) ? Yii::$app->formatter->asDate($this->date_published) : 'Not set';
     }
+
+    /**
+     * @return object Publisher
+     *
+     */
+
+    public function getPublisher(){
+
+        return $this->hasOne(Publisher::className(), ['id' => 'publisher_id'])->one();
+    }
+
+    /**
+     * @return string
+     *
+     */
+
+    public function getPublisherName(){
+        if ($publisher = $this->getPublisher()){
+            return 'Publisher: ' . $publisher->name;
+        }
+        return 'Not set';
+    }
+
+
+    /**
+     * @return ActiveQuery
+     *
+     */
+
+    public function getBookToAuthorRelations(){
+
+        return $this->hasMany(BookToAuthor::className(), ['book_id' => 'id']);
+    }
+
+    /**
+     * @return object Author[] | null
+     *
+     */
+
+    public function getAuthors(){
+
+        return $this->hasMany(Author::className(), ['id' => 'author_id'])->via('bookToAuthorRelations')->all();
+    }
+
 
 
 }
