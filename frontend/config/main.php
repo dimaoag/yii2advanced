@@ -50,6 +50,7 @@ return [
                 'employee/update' => 'employee/update',
                 'gallery' => 'gallery/index',
                 'about-me' => 'site/about',
+                'book-shop' => 'book-shop/index',
             ],
         ],
         'stringHelper' => [
