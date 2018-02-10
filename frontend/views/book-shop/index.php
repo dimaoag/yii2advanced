@@ -1,9 +1,14 @@
 <?php
 /* @var $this yii\web\View */
+/* @var $bookList object frontend\models\Book */
 ?>
-<h1>book-shop/index</h1>
 
-<p>
-    You may change the content of this page by modifying
-    the file <code><?= __FILE__; ?></code>.
-</p>
+<?php foreach ($bookList as $book): ?>
+    <div class="col-md-10">
+        <h3><?= $book->name ?></h3>
+        <p><?php  echo $book->getDatePublished(); ?></p>
+    </div>
+
+<?php endforeach; ?>
+
+

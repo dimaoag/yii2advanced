@@ -29,5 +29,10 @@ class Book extends ActiveRecord
         ];
     }
 
+    public function getDatePublished(){
+
+        return ($this->date_published) ? $this->date_published : 'Not set';
+    }
+
 
 }

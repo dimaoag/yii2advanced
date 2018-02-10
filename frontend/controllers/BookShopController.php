@@ -1,6 +1,7 @@
 <?php
 
 namespace frontend\controllers;
+use yii\db\ActiveQuery;
 use \yii\web\Controller;
 use frontend\models\Book;
 use Yii;
@@ -10,19 +11,18 @@ class BookShopController extends Controller
 {
     public function actionIndex()
     {
+//        $query = Book::find();
+//        $query->where(['publisher_id' => 1]);
+//        $query->limit(2);
+//        $query->orderBy('date_published');
+//        $bookList = $query->all();
 
-//        $book = new Book();
-//        $book->name = 'T';
-//        $book->isbn = '1551511151';
-//        $book->save();
-//
-//        echo '<pre>';
-//        print_r($book->getErrors());
-//        echo '</pre>';
+        $conditions = ['publisher_id' => 1];
+        $bookList = Book::find()->where($conditions)->limit(2)->orderBy('date_published')->all();
 
-
-
-        return $this->render('index');
+        return $this->render('index', [
+            'bookList' => $bookList,
+        ]);
     }
 
 
