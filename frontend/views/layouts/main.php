@@ -38,6 +38,9 @@ AppAsset::register($this);
     $menuItems = [
         ['label' => 'Home', 'url' => ['/site/index']],
         ['label' => 'About', 'url' => ['/site/about']],
+        ['label' => 'Authors', 'url' => ['/author/index']],
+        ['label' => 'Books', 'url' => ['/book/index']],
+        ['label' => 'Publishers', 'url' => ['/publisher/index']],
         ['label' => 'Novosti', 'url' => [ Yii::$app->urlManager->createUrl(['test/index']) ]],
         ['label' => 'Contact', 'url' => ['/site/contact']],
     ];
