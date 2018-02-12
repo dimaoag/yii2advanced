@@ -11,6 +11,15 @@ use yii\db\ActiveQuery;
 use yii\db\ActiveRecord;
 use Yii;
 
+/**
+ * This is the model class for table "publisher".
+ *
+ * @property int $id
+ * @property string $name
+ * @property string $publisher_id
+ * @property string $date_published
+ * @property int $isbn
+ */
 class Book extends ActiveRecord
 {
 

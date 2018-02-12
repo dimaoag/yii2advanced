@@ -4,6 +4,7 @@ namespace frontend\models;
 
 use Yii;
 use yii\db\ActiveRecord;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "publisher".
@@ -36,4 +37,15 @@ class Publisher extends ActiveRecord
             'identity_number' => 'Identity Number',
         ];
     }
+
+
+    public static function getList(){
+
+        $list = self::find()->asArray()->all();
+
+
+        return ArrayHelper::map($list, 'id', 'name');
+    }
+
+
 }

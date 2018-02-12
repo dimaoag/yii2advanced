@@ -1,9 +1,11 @@
 <?php
 /* @var $this yii\web\View */
 /* @var $bookList object frontend\models\Book */
-
+use yii\helpers\Url;
 ?>
-
+<br>
+<a href="<?= Url::to('book-shop/create') ?>" class="btn btn-success">Create new book</a>
+<br>
 <?php foreach ($bookList as $book): ?>
     <div class="col-md-10">
         <h3><?= $book->name ?></h3>
