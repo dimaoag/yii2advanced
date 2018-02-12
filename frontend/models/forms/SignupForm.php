@@ -43,7 +43,9 @@ class SignupForm extends Model
             $user->auth_key = Yii::$app->security->generateRandomString();
             $user->password_hash = Yii::$app->security->generatePasswordHash($this->password);
 
-            return $user->save();
+            if ($user->save()){
+                return $user;
+            }
         }
 
         return false;
