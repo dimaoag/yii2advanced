@@ -4,11 +4,23 @@ namespace frontend\controllers;
 use yii\web\Controller;
 use frontend\models\Author;
 use Yii;
+use frontend\controllers\behaviors\AccessBehavior;
 
 class AuthorController extends Controller
 {
+
+    public function behaviors()
+    {
+        return [
+            AccessBehavior::className(),
+        ];
+    }
+
+
     public function actionCreate()
     {
+
+
         $model = new Author();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()){
@@ -27,6 +39,7 @@ class AuthorController extends Controller
 
     public function actionDelete($id)
     {
+
         $model = Author::findOne($id);
         $model->delete();
         Yii::$app->session->setFlash('success', 'Author has been deleted');
@@ -39,6 +52,7 @@ class AuthorController extends Controller
 
     public function actionIndex()
     {
+
         $authorsList = Author::find()->all();
 
 
@@ -53,6 +67,7 @@ class AuthorController extends Controller
 
     public function actionUpdate($id)
     {
+
         $model = Author::findOne($id);
 
 
