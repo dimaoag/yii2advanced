@@ -56,17 +56,8 @@ return [
         'stringHelper' => [
             'class' => 'common\components\StringHelper',
         ],
-        'mailer' => [
-            'class' => 'yii\swiftmailer\Mailer',
-            'useFileTransport' => false,
-            'transport' => [
-                'class' => 'Swift_SmtpTransport',
-                'host' => 'smtp.gmail.com',
-                'username' => 'dimaoag@gmail.com',
-                'password' => '******',
-                'port' => '587',
-                'encryption' => 'tls',
-            ],
+        'emailService' => [
+            'class' => 'common\components\EmailService',
         ],
 
     ],
