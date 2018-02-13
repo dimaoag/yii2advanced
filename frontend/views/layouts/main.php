@@ -43,6 +43,7 @@ AppAsset::register($this);
         ['label' => 'Publishers', 'url' => ['/publisher/index']],
         ['label' => 'Novosti', 'url' => [ Yii::$app->urlManager->createUrl(['test/index']) ]],
         ['label' => 'Contact', 'url' => ['/site/contact']],
+        ['label' => 'Search', 'url' => ['/search/index']],
     ];
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Signup', 'url' => ['/user/signup']];
