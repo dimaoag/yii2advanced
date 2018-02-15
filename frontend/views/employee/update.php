@@ -21,5 +21,8 @@ if ($model->hasErrors()){
     <label for="">Middle Name: </label><br><br>
     <input type="text" name="middleName" id="middleName"><br><br>
 
+    <input type="hidden" id="form-token" name="<?= Yii::$app->request->csrfParam ?>"
+           value="<?= Yii::$app->request->csrfToken ?>">
+    
     <input type="submit">
 </form>

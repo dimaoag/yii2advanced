@@ -16,9 +16,16 @@ class SearchNews extends Model
 
     public function simpleSearch($keyword){
 
+//        $keyword = strip_tags($keyword); // удаляем теги
+//        $keyword = preg_quote($keyword); //екранирование
+//        $keyword = mysqli_real_escape_string($keyword); //если есть специальные символы они будут заэкранированы
+        $params = [
+            ':keyword' => $keyword,
+        ];
+
         //$sql = "SELECT * FROM `news` WHERE content LIKE '%$keyword%' LIMIT 20";
-        $sql = "SELECT * FROM news WHERE MATCH (content) AGAINST ('$keyword') LIMIT 200";
-        return Yii::$app->db->createCommand($sql)->queryAll();
+        $sql = "SELECT * FROM news WHERE MATCH (content) AGAINST (:keyword) LIMIT 200";
+        return Yii::$app->db->createCommand($sql)->bindValues($params)->queryAll();
     }
 
 

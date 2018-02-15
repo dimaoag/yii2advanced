@@ -2,6 +2,7 @@
 /* @var $this yii\web\View */
 /* @var $authorsList[] frontend\models\Author */
 use yii\helpers\Url;
+use yii\helpers\Html;
 ?>
 <h1>Authors</h1>
 <a href="<?= Url::to(['author/create']); ?>" class="btn btn-success">Create new author</a>
@@ -16,9 +17,9 @@ use yii\helpers\Url;
     </tr>
     <?php foreach ($authorsList as $author): ?>
         <tr>
-            <td><?= $author->id ?></td>
-            <td><?= $author->first_name ?></td>
-            <td><?= $author->last_name ?></td>
+            <td><?= Html::encode($author->id); ?></td>
+            <td><?= Html::encode($author->first_name); ?></td>
+            <td><?= Html::encode($author->last_name); ?></td>
             <td><a href="<?php echo Url::to(['author/update', 'id' => $author->id]); ?>" class="btn btn-warning"> Edit</a></td>
             <td><a href="<?php echo Url::to(['author/delete', 'id' => $author->id]); ?>" class="btn btn-danger"> Delete</a></td>
         </tr>
