@@ -2,6 +2,7 @@
 
 namespace frontend\models;
 
+use yii\helpers\ArrayHelper;
 use Yii;
 
 /**
@@ -100,4 +101,43 @@ class Article extends \yii\db\ActiveRecord
 
 
     }
+
+
+    public function getTags(){
+
+        return $this->hasMany(Tag::className(), ['id' => 'tag_id'])
+            ->viaTable('article_tag', ['article_id' => 'id']);
+
+    }
+
+    public function getSelectedTags(){
+
+        $selectedTags = $this->getTags()->select(['id', 'title'])->asArray()->all();
+        $res = ArrayHelper::getColumn($selectedTags, 'id');
+
+        return $res;
+
+    }
+
+    public function saveTags($tags){
+
+        if (is_array($tags)){
+
+            ArticleTag::deleteAll(['article_id' => $this->id]);
+
+            foreach ($tags as $tag_id){
+
+                $tag = Tag::findOne($tag_id);
+                $this->link('tags', $tag);
+            }
+            return true;
+        }
+
+    }
+
+
+
+
+
+
 }

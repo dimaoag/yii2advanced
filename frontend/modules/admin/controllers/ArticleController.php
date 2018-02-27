@@ -3,6 +3,7 @@
 namespace frontend\modules\admin\controllers;
 
 use frontend\models\Category;
+use frontend\models\Tag;
 use Yii;
 use frontend\models\Article;
 use frontend\models\ArticleSearch;
@@ -148,15 +149,41 @@ class ArticleController extends Controller
             }
         }
 
-
         return $this->render('category_form', [
             'article' => $article,
             'selectedCategory' => $selectedCategory,
             'categories' => $categories,
         ]);
-
-
     }
+
+
+    public function actionSelectTags($id){
+
+        $article = $this->findModel($id);
+
+//        $tags = Tag::findOne(1);
+//        var_dump($tags->articles);
+
+        $selectedTags = $article->getSelectedTags();
+        $tags = ArrayHelper::map(Tag::find()->all(), 'id', 'title');
+
+        if (Yii::$app->request->isPost){
+
+            $tags = Yii::$app->request->post('tags');
+            if ($article->saveTags($tags)){
+
+                return $this->redirect(['view', 'id' => $article->id]);
+            }
+        }
+
+
+
+        return $this->render('tags_form', [
+            'selectedTags' => $selectedTags,
+            'tags' => $tags,
+        ]);
+    }
+
 
 
 }
