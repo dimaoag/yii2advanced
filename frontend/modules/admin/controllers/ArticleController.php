@@ -130,6 +130,13 @@ class ArticleController extends Controller
 
     public function actionSelectCategory($id){
 
+        $category = Category::findOne(2);
+        $category->articles;
+
+        // можем обращатся к статьям через категорию в которою они входят
+
+
+
         $article = $this->findModel($id);
         //$article = Article::findOne($id);
         //$article->category->title // можем обращатся к категории через статю eли category_id == id статьи
