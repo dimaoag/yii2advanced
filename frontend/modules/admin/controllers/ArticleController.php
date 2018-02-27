@@ -2,12 +2,14 @@
 
 namespace frontend\modules\admin\controllers;
 
+use frontend\models\Category;
 use Yii;
 use frontend\models\Article;
 use frontend\models\ArticleSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\helpers\ArrayHelper;
 
 /**
  * ArticleController implements the CRUD actions for Article model.
@@ -124,4 +126,35 @@ class ArticleController extends Controller
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
+
+
+    public function actionSelectCategory($id){
+
+        $article = $this->findModel($id);
+        //$article = Article::findOne($id);
+        //$article->category->title // можем обращатся к категории через статю eли category_id == id статьи
+
+        $selectedCategory = $article->category->id;
+        $categories = ArrayHelper::map(Category::find()->all(), 'id', 'title');
+
+        if (Yii::$app->request->isPost){
+
+            $category = Yii::$app->request->post('category');
+            if ($article->saveCategory($category)){
+
+                return $this->redirect(['view', 'id' => $article->id]);
+            }
+        }
+
+
+        return $this->render('category_form', [
+            'article' => $article,
+            'selectedCategory' => $selectedCategory,
+            'categories' => $categories,
+        ]);
+
+
+    }
+
+
 }
