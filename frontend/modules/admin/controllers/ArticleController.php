@@ -11,6 +11,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\helpers\ArrayHelper;
+use yii\data\Pagination;
 
 /**
  * ArticleController implements the CRUD actions for Article model.
@@ -38,8 +39,16 @@ class ArticleController extends Controller
      */
     public function actionIndex()
     {
+
+//        $query = Article::find();
+//        $count = $query->count();
+//        $pagination = new Pagination(['totalCount' => $count, 'pageSize' => 2]);
+
+
+
         $searchModel = new ArticleSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $dataProvider->pagination->pageSize=5;
 
         return $this->render('index', [
             'searchModel' => $searchModel,
